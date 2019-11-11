@@ -1,5 +1,8 @@
 package be.webtechie.piheaders.definition;
 
+import be.webtechie.piheaders.util.Markdown;
+import java.util.Arrays;
+
 /**
  * List of pin types in a header.
  */
@@ -24,5 +27,14 @@ public enum PinType {
 
     public int getColor() {
         return color;
+    }
+
+    public static String toMarkdownTable() {
+        StringBuilder rt = new StringBuilder();
+        rt.append(Markdown.addHeaders(Arrays.asList("Name", "Color")));
+        for (PinType pinType : PinType.values()) {
+            rt.append(Markdown.addValues(Arrays.asList(pinType.getLabel(), String.valueOf(pinType.getColor()))));
+        }
+        return rt.toString();
     }
 }

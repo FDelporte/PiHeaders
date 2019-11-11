@@ -1,15 +1,37 @@
-package be.webtechie.piheaders;
+package be.webtechie.piheaders.definition;
 
+import be.webtechie.piheaders.HeaderPin;
 import be.webtechie.piheaders.definition.PinType;
+import be.webtechie.piheaders.util.Markdown;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * List of pins in a Raspberry Pi header.
  */
-public class Header {
+public enum Header {
+    HEADER_8("8pin header", get8PinsHeader()),
+    HEADER_26("26pin header", get26PinsHeader()),
+    HEADER_40("40pin header", get40PinsHeader());
 
-    public static List<HeaderPin> get26PinsHeader() {
+    private final String label;
+    private List<HeaderPin> pins;
+
+    Header(String label, List<HeaderPin> pins) {
+        this.label = label;
+        this.pins = pins;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public List<HeaderPin> getPins() {
+        return pins;
+    }
+
+    static List<HeaderPin> get26PinsHeader() {
         List<HeaderPin> header = new ArrayList<>();
 
         header.add(new HeaderPin(1, PinType.POWER, null, null, "3.3 VDC"));
@@ -42,7 +64,7 @@ public class Header {
         return header;
     }
 
-    public static List<HeaderPin> get40PinsHeader() {
+    static List<HeaderPin> get40PinsHeader() {
         List<HeaderPin> header = new ArrayList<>();
 
         header.addAll(get26PinsHeader());
@@ -65,7 +87,7 @@ public class Header {
         return header;
     }
 
-    public static List<HeaderPin> get8PinsHeader() {
+    static List<HeaderPin> get8PinsHeader() {
         List<HeaderPin> header = new ArrayList<>();
 
         header.add(new HeaderPin(1, PinType.POWER, null, null, "5.0 VDC"));
@@ -78,5 +100,22 @@ public class Header {
         header.add(new HeaderPin(8, PinType.GROUND, null, null,  ""));
 
         return header;
+    }
+
+    public static String toMarkdownTable(Header header) {
+        StringBuilder rt = new StringBuilder();
+
+        rt.append(Markdown.addHeaders(Arrays.asList("N°", "Type", "Gpio n°", "Wiring pi n°", "Name", "Remark")));
+        for (HeaderPin pin : header.getPins()) {
+            rt.append(Markdown.addValues(Arrays.asList(
+                    String.valueOf(pin.getPinNumber()),
+                    pin.getPinType().getLabel(),
+                    pin.getGpio() == null ? "" : String.valueOf(pin.getGpio()),
+                    pin.getWiringPiNumber() == null || pin.getWiringPiNumber() == -1 ? "" : String.valueOf(pin.getWiringPiNumber()),
+                    pin.getName(),
+                    pin.getRemark())));
+        }
+
+        return rt.toString();
     }
 }

@@ -11,7 +11,7 @@ public class Markdown {
 
         for (String header : headers) {
             row1.append(header).append(" | ");
-            row2.append(" :---: | ");
+            row2.append(" :--- | ");
         }
 
         return row1.toString() + System.lineSeparator() + row2.toString() + System.lineSeparator();
