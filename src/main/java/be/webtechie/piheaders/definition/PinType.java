@@ -33,7 +33,7 @@ public enum PinType {
         StringBuilder rt = new StringBuilder();
         rt.append(Markdown.addHeaders(Arrays.asList("Name", "Color")));
         for (PinType pinType : PinType.values()) {
-            rt.append(Markdown.addValues(Arrays.asList(pinType.getLabel(), String.valueOf(pinType.getColor()))));
+            rt.append(Markdown.addValues(Arrays.asList(pinType.getLabel(), "#" + Integer.toHexString(pinType.getColor()))));
         }
         return rt.toString();
     }
