@@ -1,16 +1,16 @@
 package be.webtechie.piheaders;
 
 import be.webtechie.piheaders.definition.Header;
+import be.webtechie.piheaders.definition.PiBoardVersion;
 import be.webtechie.piheaders.definition.PiModel;
 import be.webtechie.piheaders.definition.PiVersion;
+import be.webtechie.piheaders.definition.PinFunction;
 import be.webtechie.piheaders.definition.PinType;
-import be.webtechie.piheaders.util.Markdown;
 import java.io.File;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class UpdateReadme {
     public static void main(String[] args) {
@@ -25,13 +25,23 @@ public class UpdateReadme {
 
             rt.append("\n\n");
 
-            rt.append("### Pi versions\n\n");
+            rt.append("### Pi major versions\n\n");
             rt.append(PiVersion.toMarkdownTable());
+
+            rt.append("\n\n");
+
+            rt.append("### Pi board versions\n\n");
+            rt.append(PiBoardVersion.toMarkdownTable());
 
             rt.append("\n\n");
 
             rt.append("### Pin types\n\n");
             rt.append(PinType.toMarkdownTable());
+
+            rt.append("\n\n");
+
+            rt.append("### Pin functions\n\n");
+            rt.append(PinFunction.toMarkdownTable());
 
             rt.append("### Header types\n\n");
             for (Header header : Header.values()) {

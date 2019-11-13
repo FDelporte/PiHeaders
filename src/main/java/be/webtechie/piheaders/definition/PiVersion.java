@@ -36,11 +36,11 @@ public enum PiVersion {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.addHeaders(Arrays.asList("Name", "Description", "Headers")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Description", "Headers")));
         for (PiVersion piVersion : PiVersion.values()) {
-            rt.append(Markdown.addValues(Arrays.asList(piVersion.getLabel(),
+            rt.append(Markdown.toValueRow(Arrays.asList(piVersion.getLabel(),
                     piVersion.getDescription(),
-                    piVersion.getHeaders().stream().map(h -> h.getLabel()).collect(Collectors.joining(", ")))));
+                    piVersion.getHeaders().stream().map(h -> h.getLabel()).collect(Collectors.joining(" + ")))));
         }
         return rt.toString();
     }

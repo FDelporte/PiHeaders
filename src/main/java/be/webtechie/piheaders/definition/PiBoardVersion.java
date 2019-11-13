@@ -1,10 +1,11 @@
-package be.webtechie.piheaders;
+package be.webtechie.piheaders.definition;
 
-import be.webtechie.piheaders.definition.PiModel;
-import be.webtechie.piheaders.definition.PiVersion;
+import be.webtechie.piheaders.util.Markdown;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
-public enum BoardVersion {
+public enum PiBoardVersion {
     MODEL_1_A("Pi 1 Model A", PiModel.MODEL_A, PiVersion.VERSION_1, LocalDate.of(2013, 2, 1)),
     MODEL_1_A_PLUS("Pi 1 Model A+", PiModel.MODEL_A, PiVersion.VERSION_1, LocalDate.of(2014, 11, 1)),
     MODEL_3_A_PLUS("Pi 3 Model A+", PiModel.MODEL_A, PiVersion.VERSION_3, LocalDate.of(2018, 11, 1)),
@@ -29,7 +30,7 @@ public enum BoardVersion {
     private final PiVersion version;
     private final LocalDate releaseDate;
 
-    BoardVersion(String label, PiModel model, PiVersion version, LocalDate releaseDate) {
+    PiBoardVersion(String label, PiModel model, PiVersion version, LocalDate releaseDate) {
         this.label = label;
         this.model = model;
         this.version = version;
@@ -50,5 +51,18 @@ public enum BoardVersion {
 
     public LocalDate getReleaseDate() {
         return releaseDate;
+    }
+
+    public static String toMarkdownTable() {
+        StringBuilder rt = new StringBuilder();
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Model", "Version", "Release date")));
+        for (PiBoardVersion piBoardVersion : PiBoardVersion.values()) {
+            rt.append(Markdown.toValueRow(Arrays.asList(
+                    piBoardVersion.getLabel(),
+                    piBoardVersion.getModel().getLabel(),
+                    piBoardVersion.getVersion().getLabel(),
+                    piBoardVersion.getReleaseDate().format(DateTimeFormatter.ofPattern("yyyy-MM")))));
+        }
+        return rt.toString();
     }
 }
