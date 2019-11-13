@@ -55,12 +55,13 @@ public enum PiBoardVersion {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Model", "Version", "Release date")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Model", "Version", "Release date")));
         for (PiBoardVersion piBoardVersion : PiBoardVersion.values()) {
             rt.append(Markdown.toValueRow(Arrays.asList(
+                    piBoardVersion.name(),
                     piBoardVersion.getLabel(),
-                    piBoardVersion.getModel().getLabel(),
-                    piBoardVersion.getVersion().getLabel(),
+                    piBoardVersion.getModel().name(),
+                    piBoardVersion.getVersion().name(),
                     piBoardVersion.getReleaseDate().format(DateTimeFormatter.ofPattern("yyyy-MM")))));
         }
         return rt.toString();

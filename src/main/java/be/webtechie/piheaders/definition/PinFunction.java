@@ -30,9 +30,12 @@ public enum PinFunction {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Description")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Description")));
         for (PinFunction pinFunction : PinFunction.values()) {
-            rt.append(Markdown.toValueRow(Arrays.asList(pinFunction.getLabel(), pinFunction.getDescription())));
+            rt.append(Markdown.toValueRow(Arrays.asList(
+                    pinFunction.name(),
+                    pinFunction.getLabel(),
+                    pinFunction.getDescription())));
         }
         return rt.toString();
     }

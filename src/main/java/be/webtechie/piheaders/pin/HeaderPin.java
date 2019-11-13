@@ -62,8 +62,8 @@ public class HeaderPin {
     public String toMarkdownTableRow() {
         return Markdown.toValueRow(Arrays.asList(
                 String.valueOf(pinNumber),
-                pinType.getLabel(),
-                pinFunction == null ? "" : pinFunction.getLabel(),
+                pinType.name(),
+                pinFunction == null ? "" : pinFunction.name(),
                 bcmNumber == null ? "" : String.valueOf(bcmNumber),
                 wiringPiNumber == null || wiringPiNumber == -1 ? "" : String.valueOf(wiringPiNumber),
                 name,

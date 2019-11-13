@@ -31,9 +31,12 @@ public enum PinType {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Color")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Color")));
         for (PinType pinType : PinType.values()) {
-            rt.append(Markdown.toValueRow(Arrays.asList(pinType.getLabel(), "#" + Integer.toHexString(pinType.getColor()))));
+            rt.append(Markdown.toValueRow(Arrays.asList(
+                    pinType.name(),
+                    pinType.getLabel(),
+                    "#" + Integer.toHexString(pinType.getColor()))));
         }
         return rt.toString();
     }

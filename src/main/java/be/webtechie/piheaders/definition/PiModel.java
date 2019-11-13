@@ -28,9 +28,12 @@ public enum PiModel {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Description")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Description")));
         for (PiModel piModel : PiModel.values()) {
-            rt.append(Markdown.toValueRow(Arrays.asList(piModel.getLabel(), piModel.getDescription())));
+            rt.append(Markdown.toValueRow(Arrays.asList(
+                    piModel.name(),
+                    piModel.getLabel(),
+                    piModel.getDescription())));
         }
         return rt.toString();
     }
