@@ -1,9 +1,9 @@
 package be.webtechie.piheaders;
 
-import be.webtechie.piheaders.definition.Header;
-import be.webtechie.piheaders.definition.PiBoardVersion;
+import be.webtechie.piheaders.definition.HeaderPins;
+import be.webtechie.piheaders.definition.BoardModel;
 import be.webtechie.piheaders.definition.PiModel;
-import be.webtechie.piheaders.definition.PiVersion;
+import be.webtechie.piheaders.definition.HeaderVersion;
 import be.webtechie.piheaders.definition.PinFunction;
 import be.webtechie.piheaders.definition.PinType;
 import java.io.File;
@@ -25,13 +25,8 @@ public class UpdateReadme {
 
             rt.append("\n\n");
 
-            rt.append("### Pi major versions\n\n");
-            rt.append(PiVersion.toMarkdownTable());
-
-            rt.append("\n\n");
-
             rt.append("### Pi board versions\n\n");
-            rt.append(PiBoardVersion.toMarkdownTable());
+            rt.append(BoardModel.toMarkdownTable());
 
             rt.append("\n\n");
 
@@ -43,10 +38,18 @@ public class UpdateReadme {
             rt.append("### Pin functions\n\n");
             rt.append(PinFunction.toMarkdownTable());
 
+            rt.append("\n\n");
+
+            rt.append("### Pi header versions\n\n");
+            rt.append(HeaderVersion.toMarkdownTable());
+
+            rt.append("\n\n");
+
             rt.append("### Header types\n\n");
-            for (Header header : Header.values()) {
-                rt.append("#### ").append(header.getLabel()).append("\n\n");
-                rt.append(Header.toMarkdownTable(header));
+            for (HeaderPins headerPins : HeaderPins.values()) {
+                rt.append("#### ").append(headerPins.getLabel()).append("\n\n");
+                rt.append(HeaderPins.toMarkdownTable(headerPins));
+                rt.append("\n\n");
             }
 
             String outputFile = Paths.get(resourceDirectory.getParent(), "README.md").toString();

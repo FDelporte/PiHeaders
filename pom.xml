@@ -2,12 +2,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.webtechie</groupId>
-    <artifactId>pi-headers</artifactId>
-    <version>0.0.3</version>
+    <artifactId>pi-headerPins</artifactId>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>PiHeaders</name>
-    <description>Java library with headers and pins of all Raspberry Pi boards </description>
+    <description>Java library with headerPins and pins of all Raspberry Pi boards </description>
     <url>https://github.com/FDelporte/PiHeaders</url>
 
     <licenses>
