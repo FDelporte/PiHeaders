@@ -1,5 +1,5 @@
 # Raspberry Pi headerPins
-Java library with headerPins and pins of all Raspberry Pi boards 
+Java library with headerPins and pins of all Raspberry Pi boards
 
 ## Info
 
@@ -18,7 +18,7 @@ Java library with headerPins and pins of all Raspberry Pi boards
 
 ### Pi board versions
 
-| Name | Label | Model | Version | Release date | 
+| Name | Label | Model | Header version | Release date | 
 | :--- | :--- | :--- | :--- | :--- | 
 | MODEL_1_A | Pi 1 Model A | MODEL_A | TYPE_1 | 2013-02 | 
 | MODEL_1_A_PLUS | Pi 1 Model A+ | MODEL_A | TYPE_1 | 2014-11 | 
@@ -61,7 +61,7 @@ Java library with headerPins and pins of all Raspberry Pi boards
 | SPI | Serial Peripheral Interface | Four-wire serial bus | 
 
 
-### Pi header versions
+### Header versions
 
 | Name | Label | Description | Headers | 
 | :--- | :--- | :--- | :--- | 
@@ -207,3 +207,6 @@ Java library with headerPins and pins of all Raspberry Pi boards
 
 | Pin n° | Type | Function | BCM n° | Wiring pi n° | Name | Remark | 
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+
+
+

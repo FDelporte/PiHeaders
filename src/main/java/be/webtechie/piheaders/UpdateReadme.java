@@ -40,7 +40,7 @@ public class UpdateReadme {
 
             rt.append("\n\n");
 
-            rt.append("### Pi header versions\n\n");
+            rt.append("### Header versions\n\n");
             rt.append(HeaderVersion.toMarkdownTable());
 
             rt.append("\n\n");

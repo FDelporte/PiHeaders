@@ -55,7 +55,7 @@ public enum BoardModel {
 
     public static String toMarkdownTable() {
         StringBuilder rt = new StringBuilder();
-        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Model", "Version", "Release date")));
+        rt.append(Markdown.toHeaderRow(Arrays.asList("Name", "Label", "Model", "Header version", "Release date")));
         for (BoardModel boardModel : BoardModel.values()) {
             rt.append(Markdown.toValueRow(Arrays.asList(
                     boardModel.name(),
