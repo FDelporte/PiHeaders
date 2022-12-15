@@ -2,9 +2,9 @@
 
 Java library with headerPins and pins of all Raspberry Pi boards
 
-**Warning**
-This project is no longer maintained.
-A newer and extended version is available in https://github.com/Pi4J/pi4j-board-info
+> **Warning**
+> This project is no longer maintained.
+> A newer and extended version is available in https://github.com/Pi4J/pi4j-board-info
 
 ## Info
 
